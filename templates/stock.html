@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Price Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stock.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>📈 Stock Price Predictor</h1>
+        
+        <div class="input-section">
+            <input type="text" id="ticker" placeholder="Enter Stock Ticker (e.g., AAPL)" value="AAPL">
+            <input type="number" id="days" placeholder="Days to Predict" value="30" min="1" max="90">
+            <button onclick="predictStock()">Predict</button>
+        </div>
+        
+        <div id="loading" class="loading">Loading...</div>
+        <div id="error" class="error"></div>
+        
+        <div id="results" class="results">
+            <div class="info-box">
+                <div class="info-item">
+                    <span>Current Price:</span>
+                    <span id="currentPrice">-</span>
+                </div>
+                <div class="info-item">
+                    <span>Model Accuracy:</span>
+                    <span id="accuracy">-</span>
+                </div>
+            </div>
+            
+            <canvas id="chart"></canvas>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='stock.js') }}"></script>
+</body>
+</html>
